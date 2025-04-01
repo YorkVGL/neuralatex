@@ -274,46 +274,46 @@
           <p>Getting the gradients of a computation is as simple as calling .backward() !</p>
           <div class="code-container">
             <pre><code class="language-tex">
-              \pgfoonew \x=new Value(2.5,{},'',0)
-              \x.show()
-              
-              \pgfoonew \y=new Value(0.3,{},'',0)
-              \y.show()
-              \x.multiply(\y,z)
-              \z.show()
-              \z.backward()
-              \x.show()
-              \y.show()
+\pgfoonew \x=new Value(2.5,{},'',0)
+\x.show()
+
+\pgfoonew \y=new Value(0.3,{},'',0)
+\y.show()
+\x.multiply(\y,z)
+\z.show()
+\z.backward()
+\x.show()
+\y.show()
             </code></pre>
           </div>
           <p>This prints:</p>
           <div class="code-container">
             <pre><code class="language-tex">
-              Value(self: 1, data: 2.5, grad: 0.0, prev: , next: , op: ", isparam: 0, GC: 0.0)
-              Value(self: 2, data: 0.3, grad: 0.0, prev: , next: , op: ", isparam: 0, GC: 0.0)
-              Value(self: 3, data: 0.75, grad: 0.0, prev: 1,2, next: , op: *, isparam: 0, GC: 0.0)
-              Value(self: 1, data: 2.5, grad: 0.3, prev: , next: 3, op: ", isparam: 0, GC: 1.0)
-              Value(self: 2, data: 0.3, grad: 2.5, prev: , next: 3, op: ", isparam: 0, GC: 1.0)
+Value(self: 1, data: 2.5, grad: 0.0, prev: , next: , op: ", isparam: 0, GC: 0.0)
+Value(self: 2, data: 0.3, grad: 0.0, prev: , next: , op: ", isparam: 0, GC: 0.0)
+Value(self: 3, data: 0.75, grad: 0.0, prev: 1,2, next: , op: *, isparam: 0, GC: 0.0)
+Value(self: 1, data: 2.5, grad: 0.3, prev: , next: 3, op: ", isparam: 0, GC: 1.0)
+Value(self: 2, data: 0.3, grad: 2.5, prev: , next: 3, op: ", isparam: 0, GC: 1.0)
             </code></pre>
           <p>And defining and calling an MLP is easy too!</p>
           <div class="code-container">
             <pre><code class="language-tex">
-              \input{engine.tex}
+\input{engine.tex}
 
-              % Create two Value objects to store input values
-              \pgfoonew \x=new Value(1.0,{},'',0)
-              \pgfoonew \y=new Value(-1.0,{},'',0)
+% Create two Value objects to store input values
+\pgfoonew \x=new Value(1.0,{},'',0)
+\pgfoonew \y=new Value(-1.0,{},'',0)
 
-              % Store the object IDs of the input Values in a list
-              \x.get id(\inputIDx)
-              \y.get id(\inputIDy)
-              \edef\templist{\inputIDx,\inputIDy}
+% Store the object IDs of the input Values in a list
+\x.get id(\inputIDx)
+\y.get id(\inputIDy)
+\edef\templist{\inputIDx,\inputIDy}
 
-              % Define the MLP
-              \pgfoonew \mlp=new MLP(2,{4,4,1})
+% Define the MLP
+\pgfoonew \mlp=new MLP(2,{4,4,1})
 
-              % Forward pass through MLP
-              \mlp.forward(\templist,output)
+% Forward pass through MLP
+\mlp.forward(\templist,output)
             </code></pre>
           </div>
         </div>
